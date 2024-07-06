@@ -1,17 +1,17 @@
 public class Programa {
-    //Atributos
+    // Atributos
     private String nombre;
     private Proceso[] procesos;
     private boolean state;
 
-    //Constructor
+    // Constructor
     public Programa(String nombre, Proceso[] procesos) {
         this.nombre = nombre;
         this.procesos = procesos;
         this.state = false;
     }
 
-    //Getters
+    // Getters
     public String getNombre() {
         return nombre;
     }
