@@ -1,0 +1,40 @@
+# Archivos compilados
+*.class
+
+# Paquetes
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Archivos de Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Archivos de Gradle
+.gradle/
+build/
+
+# Archivos temporales
+*~
+*.swp
+
+# Archivos de entorno de desarrollo integrado (IDE)
+/.idea
+/*.iml
+/*.iws
+/.settings/
+/.project
+/.classpath
+/.vscode/
+*.code-workspace
