@@ -1,17 +1,18 @@
 public class Disco {
     // Atributos
     private static Disco instancia; // Singleton
-    private PlanificadorProcesos planificador;
     private Programa[] programas;
+    private int size;
 
     // Constructor
     public Disco() {
-        planificador = PlanificadorProcesos.getInstancia();
+        programas = new Programa[0];
     }
 
     // Setters
     public void setProgramas(Programa[] programas) {
         this.programas = programas;
+        this.size = programas.length;
     }
 
     // Getters
@@ -24,6 +25,10 @@ public class Disco {
 
     public Programa[] getProgramas() {
         return programas;
+    }
+
+    public int getSize() {
+        return size;
     }
     
 }
