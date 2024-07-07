@@ -14,9 +14,24 @@ public class PlanificadorProcesos {
         return instancia;
     }
 
-    
+    public Proceso[] planificar(int option, Proceso[] procesos){
 
-    public Proceso[] AlgoritmoFIFO(Proceso[] procesos) {
+        if(option == 1){
+            return AlgoritmoFIFO(procesos);
+        }
+
+        if (option == 2){
+            return AlgoritmoSJF(procesos);
+        }
+        
+        // Si el tipo de proceso no es especificado devolvemos lo mismo
+
+        return procesos;
+
+    }
+
+
+    private Proceso[] AlgoritmoFIFO(Proceso[] procesos) {
         // FCFS o FIFO es el algoritmo más simple, pero el que menos rendimiento ofrece
         // el primer proceso que llega se ejecuta, y una vez terminado se ejecuta el
         // siguiente
@@ -25,7 +40,7 @@ public class PlanificadorProcesos {
         return procesos;
     }
 
-    public Proceso[] AlgoritmoSJF(Proceso[] procesos) {
+    private Proceso[] AlgoritmoSJF(Proceso[] procesos) {
         // SJF, prioriza los procesos más cortos primero independientemente de su
         // llegada
         // en caso de que sean iguales usará FIFO. Tiene el problema de generar
