@@ -25,7 +25,8 @@ public class GeneradorProgramas {
         BufferedReader reader = new BufferedReader(new FileReader("programas.txt"));
         while ((linea = reader.readLine()) != null) {
             int count = (int) (Math.random() * 10) + 1; // De 1 a 10 la cantidad de procesos
-            for (int i = 0; i < count; i++) {
+            //Observación del nando: tuve que cambiar aqui para que los id de los procesos partan minimo en el 1
+            for (int i = 1; i < count + 1; i++) {
                 int id = i;
                 int size = (int) (Math.random() * 10) + 1; // De 1 a 10 el tamaño de un proceso
                 listaProcesos.add(new Proceso(id, size));

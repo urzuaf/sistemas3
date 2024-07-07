@@ -4,6 +4,7 @@ public class Simulador {
         // Instancias
         PlanificadorProcesos planificador = PlanificadorProcesos.getInstancia();
         Disco disco = Disco.getInstancia();
+        AsignadorMemoria AM = AsignadorMemoria.getInstancia();
 
 
         // Validación de la cantidad de Argumentos
@@ -38,29 +39,52 @@ public class Simulador {
 
         disco.setProgramas(cargarProgramas());
 
+        //Creariamos e inicializariamos la ram
+        RAM ram = RAM.getInstancia();
+        ram.StartRAM(sizeRAM);
+
         for (int i = 0; i < disco.getSize(); i++){
-            
             System.out.println("Programa: " + disco.getProgramas()[i].getNombre());
             System.out.println("");
             Proceso[] procesos = disco.getProgramas()[i].getProcesos();
-
+            
+            /* 
             Proceso[] procesosFIFO = planificador.planificar(1, procesos);
 
             System.out.println("Procesos por FIFO");
             ImprimirProcesos(procesosFIFO);
             System.out.println("");
-
+            */
             Proceso[] procesosSJF = planificador.planificar(2, procesos);
 
-            System.out.println("Procesos por SFJ");
-            ImprimirProcesos(procesosSJF);
-            System.out.println("");
+        
+            //System.out.println("Procesos por SFJ");
+            //System.out.println("Prueba alocando procesos SFJ");
+            //ImprimirProcesos(procesosSJF);
             
+
+            //Prueba de asignar memoria
+        
+            for (int j = 0; j<procesosSJF.length; j++){
+                System.out.println("Proceso: " +procesosSJF[j].getId() + " tamaño: " + procesosSJF[j].getSize() );
+                AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j]);
+                System.out.println("");
+            }
+          
+
         }
 
-
-
+        // cuantos espacios vacios quedan en la ram al final de la ejecución
+        int cont = 0;
+        for(int i = 0; i<ram.getContext().length; i++){
+            if(ram.getContext()[i] == 0){
+                cont++;
+            }
+        }
+        System.out.println("memoria vacia al final: "+cont);
+        
     }
+
 
     public static void validarArgumentos(int algoritmoPlanificacion, int algoritmoAsignacion, int numProcesadores, int quantum, int sizeRAM){
         if (algoritmoPlanificacion < 1 || algoritmoPlanificacion > 2) {
