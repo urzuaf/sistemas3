@@ -5,6 +5,7 @@ public class Simulador {
         PlanificadorProcesos planificador = PlanificadorProcesos.getInstancia();
         Disco disco = Disco.getInstancia();
 
+
         // Validación de la cantidad de Argumentos
         if (args.length != 5) {
             System.err.println("Error, debe ingresar como argumento:");
@@ -56,6 +57,8 @@ public class Simulador {
             System.out.println("");
             
         }
+
+
 
     }
 
