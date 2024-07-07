@@ -11,15 +11,16 @@ public class Simulador{
         Proceso proceso4 = new Proceso(4, 5); 
         Proceso proceso5 = new Proceso(5, 10); 
         Proceso proceso6 = new Proceso(6, 2); 
+        Proceso proceso7 = new Proceso(7, 6); 
 
-        Proceso[] procesos = {proceso1, proceso2, proceso3};
+        Proceso[] procesos = {proceso1, proceso2, proceso3, proceso4, proceso5, proceso6, proceso7};
 
-        Proceso[] procesosFIFO = planificador.AlgoritmoFIFO(procesos);
-
-        Proceso[] procesosSJF = planificador.AlgoritmoSJF(procesos);
+        Proceso[] procesosFIFO = planificador.planificar(1,procesos);
 
         System.out.println("Procesos por FIFO");
         ImprimirProcesos(procesosFIFO);
+
+        Proceso[] procesosSJF = planificador.planificar(2, procesos);
 
         System.out.println("Procesos por SFJ");
         ImprimirProcesos(procesosSJF);
