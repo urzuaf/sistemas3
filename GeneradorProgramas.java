@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 public class GeneradorProgramas {
 
+    private static GeneradorProgramas instancia = null;
+    private static int countId = 1;
+
     public static Programa[] getProgramas(){
         try {
             Programa[] programas = generarProgramas();
@@ -27,7 +30,8 @@ public class GeneradorProgramas {
             int count = (int) (Math.random() * 10) + 1; // De 1 a 10 la cantidad de procesos
             //Observación del nando: tuve que cambiar aqui para que los id de los procesos partan minimo en el 1
             for (int i = 1; i < count + 1; i++) {
-                int id = i;
+                int id = countId;
+                countId++;
                 int size = (int) (Math.random() * 10) + 1; // De 1 a 10 el tamaño de un proceso
                 listaProcesos.add(new Proceso(id, size));
             }
@@ -37,6 +41,13 @@ public class GeneradorProgramas {
         reader.close();
 
         return listaProgramas.toArray(new Programa[0]);
+    }
+
+    public static GeneradorProgramas getInstancia(){
+        if (instancia == null) {
+            instancia = new GeneradorProgramas();
+        }
+        return instancia;
     }
 
 }
