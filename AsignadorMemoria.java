@@ -141,6 +141,8 @@ public class AsignadorMemoria {
         // Alocamos el agujero con mejorAjuste
 
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
+        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
+        hilo.start();
 
         return;
     }
@@ -198,6 +200,8 @@ public class AsignadorMemoria {
 
         System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
+        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
+        hilo.start();
 
         return;
     }
