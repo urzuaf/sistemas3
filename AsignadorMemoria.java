@@ -44,7 +44,7 @@ public class AsignadorMemoria {
     }
 
     private void primerAjuste(Proceso proceso) {
-        System.out.println("Alocando memoria primer ajuste");
+        /* System.out.println("Alocando memoria primer ajuste"); */
         // Obtenemos el tamaño del agujero a buscar
         int goal = proceso.getSize();
 
@@ -91,7 +91,7 @@ public class AsignadorMemoria {
 
     private void mejorAjuste(Proceso proceso) {
 
-        System.out.println("Alocando memoria mejor ajuste");
+        /* System.out.println("Alocando memoria mejor ajuste"); */
         // Obtenemos el tamaño del agujero a buscar
         int goal = proceso.getSize();
 
@@ -148,7 +148,7 @@ public class AsignadorMemoria {
     }
 
     private void peorAjuste(Proceso proceso) {
-        System.out.println("Alocando memoria peor ajuste");
+        /* System.out.println("Alocando memoria peor ajuste"); */
         // Obtenemos el tamaño del agujero a buscar
         int goal = proceso.getSize();
 

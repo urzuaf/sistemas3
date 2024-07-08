@@ -43,11 +43,29 @@ public class Simulador {
         RAM ram = RAM.getInstancia();
         ram.StartRAM(sizeRAM);
 
+        if (algoritmoPlanificacion == 1){
+            System.out.println("Planificando por FIFO");
+        }
+        else{
+            System.out.println("Planificando por SJF");
+        }
+        if (algoritmoAsignacion == 1){
+            System.out.println("Alocando memoria primer ajuste");
+        }
+        else if (algoritmoAsignacion == 2){
+            System.out.println("Alocando memoria mejor ajuste");
+        }
+        else{
+            System.out.println("Alocando memoria peor ajuste");
+        }
+        System.out.println("");
+
         int aux = 1;
 
         for (int i = 0; i < disco.getSize(); i++){
-            System.out.println("Programa: " + disco.getProgramas()[i].getNombre());
-            System.out.println("");
+            /* System.out.println("Programa: " + disco.getProgramas()[i].getNombre());
+            System.out.println(""); */
+            String nombrePrograma = disco.getProgramas()[i].getNombre();
             Proceso[] procesos = disco.getProgramas()[i].getProcesos();
             
             /* 
@@ -57,9 +75,8 @@ public class Simulador {
             ImprimirProcesos(procesosFIFO);
             System.out.println("");
             */
-            Proceso[] procesosSJF = planificador.planificar(2, procesos);
+            procesos = planificador.planificar(algoritmoPlanificacion, procesos);
 
-        
             //System.out.println("Procesos por SFJ");
             //System.out.println("Prueba alocando procesos SFJ");
             //ImprimirProcesos(procesosSJF);
@@ -67,12 +84,12 @@ public class Simulador {
 
             //Prueba de asignar memoria
         
-            for (int j = 0; j<procesosSJF.length; j++){
+            for (int j = 0; j<procesos.length; j++){
                 try {
-                    Thread.sleep(500 * procesosSJF[j].getSize());
-                    System.out.println("Proceso: " +procesosSJF[j].getId() + " tamaño: " + procesosSJF[j].getSize() );
-                    AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j]);
-                    System.out.println("");
+                    Thread.sleep(500 * procesos[j].getSize());
+                    System.out.println("Proceso: " +procesos[j].getId() + " del Programa: " + nombrePrograma + " con tamaño: " + procesos[j].getSize() );
+                    AM.asignarMemoria(algoritmoAsignacion, procesos[j]);
+                    /* System.out.println(""); */
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

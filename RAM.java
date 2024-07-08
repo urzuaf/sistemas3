@@ -49,7 +49,7 @@ public class RAM {
 
     public void Alocar(int idProceso, int start, int end) {
         // recibir donde comienza y terminan los bloques a guardar los procesos
-        System.out.println("Alocados bloques: "+  this.mmu.traducir(start)+" hasta: "+ this.mmu.traducir(end));
+        System.out.println("Alocados bloques: desde: " + this.mmu.traducir(start)+" hasta: " + this.mmu.traducir(end));
         for (int i = start; i < end + 1; i++) {
             this.bloques[i] = idProceso;
         }
@@ -57,8 +57,8 @@ public class RAM {
     }
     
     public void Dealocar(int idProceso) {
-        System.out.println("" );
-        System.out.println("Proceso : "+  idProceso +" terminado, liberando memoria" );
+        /* System.out.println("" ); */
+        System.out.println("Proceso: " + idProceso + " terminado, liberando memoria" );
         System.out.println("" );
         for (int i = 0; i < this.bloques.length; i++) {
             if(this.bloques[i] == idProceso){
