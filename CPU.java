@@ -18,7 +18,7 @@ public class CPU implements Runnable{
 
     public synchronized void ejecutarProceso(Proceso proceso){
         try {
-            System.out.println("");
+            /* System.out.println(""); */
             Thread.sleep(proceso.getSize() * 1000);
             ram.Dealocar(proceso.getId());
         }
