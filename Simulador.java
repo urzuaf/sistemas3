@@ -84,7 +84,7 @@ public class Simulador {
             //Prueba de asignar memoria
             for (int j = 0; j<procesos.length; j++){
                 try {
-                        Thread.sleep(800 );
+                        Thread.sleep(2000);
                         System.out.println("Proceso: " +procesos[j].getId() + " del Programa: " + nombrePrograma + " con tamaño: " + procesos[j].getSize() );
                         AM.asignarMemoria(algoritmoAsignacion, procesos[j], numProcesadores);
                         /* System.out.println(""); */

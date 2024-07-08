@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 
-public class AsignadorMemoria {
+public class AsignadorMemoria implements Runnable {
     // Atributos
     private static AsignadorMemoria instancia; // Singleton
     //private int[] contextoMemoria;
     private Procesador procesador;
+
+    private int option;
+    private Proceso proceso;
+    private int numProcesadores;
 
     // Constructor
     private AsignadorMemoria() {
@@ -18,7 +22,9 @@ public class AsignadorMemoria {
         return instancia;
     }
 
-    
+    public void run() {
+        asignarMemoria(this.option, this.proceso, this.numProcesadores);
+    }
 
     public void asignarMemoria(int option, Proceso proceso, int numProcesadores) {
         // La idea es entregar que algoritmo se va a usar en option.
@@ -140,7 +146,7 @@ public class AsignadorMemoria {
             }
         }
 
-        System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
+       // System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
         // Alocamos el agujero con mejorAjuste
 
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
@@ -201,7 +207,7 @@ public class AsignadorMemoria {
 
         // Alocamos el agujero con peorAjuste
 
-        System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
+        //System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
 
         procesador.ejecutarProceso(proceso); 

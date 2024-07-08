@@ -29,7 +29,11 @@ public class Procesador {
             int i = random.nextInt(this.nucleos.length);
             if(this.nucleos[i].getStatus() == false){
                 System.out.println("Ejecutando proceso " + proceso.getId() + " en nucleo "+ this.nucleos[i].getId());        
-                this.nucleos[i].ejecutarProceso(proceso);
+                //Thread hilo = new Thread(new CPU(1, proceso), "Hilo-" + (nucleo + 1));
+                Thread hilo = new Thread(this.nucleos[i], "Hilo-" + (i + 1));
+                this.nucleos[i].setProceso(proceso);
+                //this.nucleos[i].ejecutarProceso(proceso);
+                hilo.start();
                 break;
             }
         }
