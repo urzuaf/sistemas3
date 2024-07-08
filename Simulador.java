@@ -82,13 +82,12 @@ public class Simulador {
             
 
             //Prueba de asignar memoria
-        
             for (int j = 0; j<procesos.length; j++){
                 try {
-                    Thread.sleep(500 * procesos[j].getSize());
-                    System.out.println("Proceso: " +procesos[j].getId() + " del Programa: " + nombrePrograma + " con tamaño: " + procesos[j].getSize() );
-                    AM.asignarMemoria(algoritmoAsignacion, procesos[j], numProcesadores);
-                    /* System.out.println(""); */
+                        Thread.sleep(800 );
+                        System.out.println("Proceso: " +procesos[j].getId() + " del Programa: " + nombrePrograma + " con tamaño: " + procesos[j].getSize() );
+                        AM.asignarMemoria(algoritmoAsignacion, procesos[j], numProcesadores);
+                        /* System.out.println(""); */
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -27,7 +27,6 @@ public class Procesador {
     public void ejecutarProceso(Proceso proceso) {
         while(true){
             int i = random.nextInt(this.nucleos.length);
-            System.out.println("random: "+ i + "nucleos: " + this.nucleos.length);
             if(this.nucleos[i].getStatus() == false){
                 System.out.println("Ejecutando proceso " + proceso.getId() + " en nucleo "+ this.nucleos[i].getId());        
                 this.nucleos[i].ejecutarProceso(proceso);

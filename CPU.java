@@ -34,7 +34,7 @@ public class CPU implements Runnable{
         try {
             System.out.println("");
             this.state = true;
-            Thread.sleep(proceso.getSize() * 1000);
+            Thread.sleep(proceso.getSize() * 400);
             ram.Dealocar(proceso.getId());
             this.state = false;
         }

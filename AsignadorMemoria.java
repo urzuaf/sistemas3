@@ -18,6 +18,8 @@ public class AsignadorMemoria {
         return instancia;
     }
 
+    
+
     public void asignarMemoria(int option, Proceso proceso, int numProcesadores) {
         // La idea es entregar que algoritmo se va a usar en option.
         if (option <= 0 || option > 3) {
