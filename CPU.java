@@ -6,6 +6,7 @@ public class CPU implements Runnable{
     private int quantum;
     private Proceso proceso;
     
+    
     public CPU(int quantum, Proceso proceso){
         this.quantum = quantum;
         this.proceso = proceso;

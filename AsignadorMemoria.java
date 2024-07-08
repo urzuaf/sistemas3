@@ -4,6 +4,7 @@ public class AsignadorMemoria {
     // Atributos
     private static AsignadorMemoria instancia; // Singleton
     //private int[] contextoMemoria;
+    private Procesador procesador;
 
     // Constructor
     private AsignadorMemoria() {
@@ -17,12 +18,13 @@ public class AsignadorMemoria {
         return instancia;
     }
 
-    public void asignarMemoria(int option, Proceso proceso) {
+    public void asignarMemoria(int option, Proceso proceso, int numProcesadores) {
         // La idea es entregar que algoritmo se va a usar en option.
         if (option <= 0 || option > 3) {
             return;
         }
-
+        procesador = Procesador.getInstancia();
+        procesador.setNucleos(numProcesadores);
         // traemos el contexto de la RAM
         //RAM memoria = RAM.getInstancia();
         //this.contextoMemoria = memoria.getContext();
@@ -84,8 +86,7 @@ public class AsignadorMemoria {
         }
         
         ram.Alocar(proceso.getId(), placeholder[0], placeholder[2]);
-        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
-        hilo.start();
+        procesador.ejecutarProceso(proceso); 
 
     }
 
@@ -141,8 +142,8 @@ public class AsignadorMemoria {
         // Alocamos el agujero con mejorAjuste
 
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
-        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
-        hilo.start();
+
+        procesador.ejecutarProceso(proceso); 
 
         return;
     }
@@ -200,9 +201,8 @@ public class AsignadorMemoria {
 
         System.out.println("Agujero escogido: [" + agujero[0] + " " + agujero[1] + " " + agujero[2] + " ]");
         ram.Alocar(proceso.getId(), agujero[0], agujero[2]);
-        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
-        hilo.start();
 
+        procesador.ejecutarProceso(proceso); 
         return;
     }
 

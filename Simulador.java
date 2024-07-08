@@ -6,7 +6,6 @@ public class Simulador {
         Disco disco = Disco.getInstancia();
         AsignadorMemoria AM = AsignadorMemoria.getInstancia();
 
-
         // Validación de la cantidad de Argumentos
         if (args.length != 5) {
             System.err.println("Error, debe ingresar como argumento:");
@@ -69,9 +68,9 @@ public class Simulador {
         
             for (int j = 0; j<procesosSJF.length; j++){
                 try {
-                    Thread.sleep(500 * procesosSJF[j].getSize());
+                    Thread.sleep(1000 );
                     System.out.println("Proceso: " +procesosSJF[j].getId() + " tamaño: " + procesosSJF[j].getSize() );
-                    AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j]);
+                    AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j], numProcesadores);
                     System.out.println("");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
