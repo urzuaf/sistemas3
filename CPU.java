@@ -1,22 +1,30 @@
-public class CPU {
+public class CPU implements Runnable{
 
-    private static CPU instancia;
+    //private static CPU instancia;
+    RAM ram = RAM.getInstancia();
 
-    private boolean[] nucleos;
-    private int nucleosSize;
     private int quantum;
+    private Proceso proceso;
     
-    private CPU(){}
-
-    public static CPU getInstancia(){
-        if (instancia == null) {
-            instancia = new CPU();
-        }
-        return instancia;
+    public CPU(int quantum, Proceso proceso){
+        this.quantum = quantum;
+        this.proceso = proceso;
     }
 
-    public boolean ejecutarProceso(int id){
-        return true;
+    @Override
+    public void run() {
+        ejecutarProceso(this.proceso);
+    }
+
+    public synchronized void ejecutarProceso(Proceso proceso){
+        try {
+            System.out.println("");
+            Thread.sleep(proceso.getSize() * 1000);
+            ram.Dealocar(proceso.getId());
+        }
+        catch (Exception e) {
+            System.out.println("El proceso fue interrumpido mientras dormia");
+        }
     }
 
 }

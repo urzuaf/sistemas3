@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class AsignadorMemoria {
     // Atributos
     private static AsignadorMemoria instancia; // Singleton
-    private int[] contextoMemoria;
+    //private int[] contextoMemoria;
 
     // Constructor
     private AsignadorMemoria() {
@@ -24,8 +24,8 @@ public class AsignadorMemoria {
         }
 
         // traemos el contexto de la RAM
-        RAM memoria = RAM.getInstancia();
-        this.contextoMemoria = memoria.getContext();
+        //RAM memoria = RAM.getInstancia();
+        //this.contextoMemoria = memoria.getContext();
 
         if (option == 1) {
             primerAjuste(proceso);
@@ -82,8 +82,10 @@ public class AsignadorMemoria {
             }
 
         }
-
+        
         ram.Alocar(proceso.getId(), placeholder[0], placeholder[2]);
+        Thread hilo = new Thread(new CPU(1, proceso), "Hilo");
+        hilo.start();
 
     }
 

@@ -43,6 +43,8 @@ public class Simulador {
         RAM ram = RAM.getInstancia();
         ram.StartRAM(sizeRAM);
 
+        int aux = 1;
+
         for (int i = 0; i < disco.getSize(); i++){
             System.out.println("Programa: " + disco.getProgramas()[i].getNombre());
             System.out.println("");
@@ -66,9 +68,19 @@ public class Simulador {
             //Prueba de asignar memoria
         
             for (int j = 0; j<procesosSJF.length; j++){
-                System.out.println("Proceso: " +procesosSJF[j].getId() + " tamaño: " + procesosSJF[j].getSize() );
-                AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j]);
-                System.out.println("");
+                try {
+                    Thread.sleep(500 * procesosSJF[j].getSize());
+                    System.out.println("Proceso: " +procesosSJF[j].getId() + " tamaño: " + procesosSJF[j].getSize() );
+                    AM.asignarMemoria(algoritmoAsignacion, procesosSJF[j]);
+                    System.out.println("");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if(i == disco.getSize()-1 && aux == 1){
+                i = 0;
+                aux = 0;
             }
           
 

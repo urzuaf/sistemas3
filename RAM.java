@@ -55,6 +55,18 @@ public class RAM {
         }
 
     }
+    
+    public void Dealocar(int idProceso) {
+        System.out.println("" );
+        System.out.println("Proceso : "+  idProceso +" terminado, liberando memoria" );
+        System.out.println("" );
+        for (int i = 0; i < this.bloques.length; i++) {
+            if(this.bloques[i] == idProceso){
+                this.bloques[i] = 0;
+            }
+        }
+
+    }
 
     public int[] getContext() {
         // retorna la información de los bloques
