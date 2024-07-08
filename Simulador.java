@@ -41,6 +41,7 @@ public class Simulador {
         //Creariamos e inicializariamos la ram
         RAM ram = RAM.getInstancia();
         ram.StartRAM(sizeRAM);
+        AM.setNumProcesadores(numProcesadores);
 
         if (algoritmoPlanificacion == 1){
             System.out.println("Planificando por FIFO");
@@ -86,7 +87,7 @@ public class Simulador {
                 try {
                         Thread.sleep(2000);
                         System.out.println("Proceso: " +procesos[j].getId() + " del Programa: " + nombrePrograma + " con tamaño: " + procesos[j].getSize() );
-                        AM.asignarMemoria(algoritmoAsignacion, procesos[j], numProcesadores);
+                        AM.asignarMemoria(algoritmoAsignacion, procesos[j]);
                         /* System.out.println(""); */
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -130,8 +131,8 @@ public class Simulador {
             System.err.println("Error, el Quantum de los Procesadores debe ser un número mayor que 0.");
             System.exit(0);
         }
-        if (sizeRAM < 1) {
-            System.err.println("Error, el Tamaño de la Memoria RAM debe ser un número mayor que 0.");
+        if (sizeRAM < 100) {
+            System.err.println("Error, el Tamaño de la Memoria RAM debe ser un número mayor que 100.");
             System.exit(0);
         }
     }

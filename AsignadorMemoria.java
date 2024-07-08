@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class AsignadorMemoria implements Runnable {
+public class AsignadorMemoria {
     // Atributos
     private static AsignadorMemoria instancia; // Singleton
     //private int[] contextoMemoria;
     private Procesador procesador;
 
-    private int option;
-    private Proceso proceso;
+    /* private int option;
+    private Proceso proceso; */
     private int numProcesadores;
 
     // Constructor
@@ -22,17 +22,13 @@ public class AsignadorMemoria implements Runnable {
         return instancia;
     }
 
-    public void run() {
-        asignarMemoria(this.option, this.proceso, this.numProcesadores);
-    }
-
-    public void asignarMemoria(int option, Proceso proceso, int numProcesadores) {
+    public void asignarMemoria(int option, Proceso proceso) {
         // La idea es entregar que algoritmo se va a usar en option.
         if (option <= 0 || option > 3) {
             return;
         }
-        procesador = Procesador.getInstancia();
-        procesador.setNucleos(numProcesadores);
+        /* procesador = Procesador.getInstancia();
+        procesador.setNucleos(this.numProcesadores); */
         // traemos el contexto de la RAM
         //RAM memoria = RAM.getInstancia();
         //this.contextoMemoria = memoria.getContext();
@@ -212,6 +208,12 @@ public class AsignadorMemoria implements Runnable {
 
         procesador.ejecutarProceso(proceso); 
         return;
+    }
+
+    public void setNumProcesadores(int numProcesadores) {
+        this.numProcesadores = numProcesadores;
+        this.procesador = Procesador.getInstancia();
+        this.procesador.setNucleos(this.numProcesadores);
     }
 
 }
