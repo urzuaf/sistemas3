@@ -13,7 +13,7 @@
 
 ## Compilación
 
-Para compilar el proyecto, navegue hasta el directorio que contiene el archivo `Main.java` y ejecute el siguiente comando en la terminal:
+Para compilar el proyecto, navegue hasta el directorio que contiene el archivo `Simulador.java` y ejecute el siguiente comando en la terminal:
 
 ```bash
 javac Simulador.java
